@@ -3,7 +3,6 @@ def occr(s1, s2, ind, occ):
 	if index==-1:
 		return 
 	else:
-		print("append",index+ind)
 		occ.append(index+ind)
 		occr(s1[index+1:],s2,index+ind,occ)
 	
