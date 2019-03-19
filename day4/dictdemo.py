@@ -28,24 +28,21 @@ while True:
 	if ch==0: break
 	if ch==1:
 		movie = input("Enter movie: ")
-		if movie in mydict:
-			print("Already added!")
+		if movie in mydict: print("Already added!")
 		else:
 			mydict[movie] = list() #check if it works without explicit initialisation
 			addActors(mydict[movie])
 	elif ch==2:
 		movie = input("Enter movie: ")
-		if movie in mydict:
-			addActors(mydict[movie])
-		else:
-			print("Movie doesn't exist")
+		if movie in mydict: addActors(mydict[movie])
+		else: print("Movie doesn't exist")
 	elif ch==3:
 		movie = input("Enter movie: ")
-		if movie in mydict:
+		if movie not in mydict: print("Movie doesn't exist")
+		else: 
 			actors = mydict.pop(movie)
 			movie = input("Enter updated movie name: ")
 			mydict[movie] = actors
-		else: print("Movie doesn't exist")
 	elif ch==4:
 		movie = input("Enter movie: ")
 		if movie not in mydict: print("Movie doesn't exist!")
