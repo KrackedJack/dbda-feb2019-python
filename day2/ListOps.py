@@ -7,8 +7,7 @@ menu = """1. Add Data
 
 #lst=[12,65,48,75]
 while True:
-	print()
-	print(menu)
+	print("\n",menu)
 	ch = int(input("Enter choice (0-Exit) : "))
 	if ch==0:
 		break;
@@ -34,3 +33,4 @@ while True:
 		for i,j in enumerate(lst):
 			if ch1 == 1:print(i,j)
 			else: print(j)	
+	else:print("Invalid input")
