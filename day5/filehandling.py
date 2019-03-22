@@ -6,13 +6,9 @@ else:
 	flist = list()
 
 appendFlag = modifyFlag = False
-added = 0
+added  = deleted = 0
 lcount = len(flist)
 print(lcount, flist)
-
-# for line in flist:
-# 			if flist[line][0] = id:
-# 		else: print("ID not found")
 
 def addRecord():
 	global flist, appendFlag, added
@@ -76,40 +72,48 @@ def searchByName():
 def searchByID():
 	id = int(input("Enter ID: "))
 	for ind, line in enumerate(flist):
-		if id == line.split(":")[0]:	
+		print(line)
+		if id == int(line.split(":")[0]):	
 			print(ind, line)
 			break
 	else: print("Not found.")	
 
 def deleteByID():
-	global lcount
+	global lcount, modifyFlag, appendFlag, added
 	id = int(input("Enter ID: "))
 	for ind, line in enumerate(flist):
-		if id == line.split(":")[0]:	
+		if id == int(line.split(":")[0]):	
 			print(flist.pop(ind), "removed.")
-			lcount = lcount - 1
+			print(ind, lcount)
+			if not modifyFlag and ind<lcount:
+				modifyFlag = True
+				lcount = lcount - 1
+			else:
+				added = added - 1
+				if added == 0:
+					appendFlag = False
 			break
 	else: print("Not found.")
 
 def searchByJob():
 	job = input("Enter job: ")
 	for ind, line in enumerate(flist):
-		if job == line.split(":")[1]:	
+		if job == line.split(":")[3]:	
 			print(ind, line)
 			break
 	else: print("Not found.")	
 
 
 while True:
-	print("""1. Add record.
-	2. Modify salary.
-	3. Modify job.
-	4. Search by ID.
-	5. Search by name.
-	6. Delete by ID.
-	7. Search by designation.
-	8. Display all.
-	0. Exit.""")
+	print("1. Add record.\n"
+		  "2. Modify salary.\n"
+		  "3. Modify job.\n"
+		  "4. Search by ID.\n"
+		  "5. Search by name.\n"
+		  "6. Delete by ID.\n"
+		  "7. Search by designation.\n"
+		  "8. Display all.\n"
+		  "0. Exit.")
 
 	ch = int(input("Enter choice: "))
 	if ch == 1:
@@ -125,7 +129,7 @@ while True:
 	elif ch == 6:		
 		deleteByID()
 	elif ch == 7:
-		pass
+		searchByJob()
 	elif ch == 8:
 		for line in flist:
 			print(line)
@@ -133,15 +137,17 @@ while True:
 		print("a",appendFlag," m",modifyFlag)
 		if appendFlag and not modifyFlag:
 			with open("../write.txt","a") as fw:
-				print("writing")
+				print("appending")
 				for line in flist[lcount]:
 					fw.write(line)
 		
-		else:
+		elif modifyFlag:
 			with open("../write.txt","w") as fw:
 				print("writing")
 				for line in flist:
 					fw.write(line)
+
+		else: print("No change.")
 
 		break
 	else: print("Invalid input")
