@@ -27,8 +27,19 @@ class SalariedEmployee(Employee):
 	def netSal(self):
 		return self.sal + (.1*self.sal) + (.15*self.sal) + (.08*self.sal) + self.bonus #sal+ha+hra+pf+bonus
 
+class ContractEmployee(Employee):
+	def __init__(self, id, name, dept, job, hrs, rate):
+		super().__init__(id, name, dept, job) 
+		self.hrs = hrs
+		self.rate = rate
 
+	def __str__(self):
+		return "{}, Hours: {}, Rate: {}, NetSal: {}".format(Employee.__str__(self), self.hrs, self.rate, self.netSal()) 
+
+	def netSal(self):
+		return self.hrs * self.rate
 
 if __name__ == '__main__':
 	print(Employee(1,"name","dept","job"))
 	print(SalariedEmployee(1,"name","dept","job",1236,65))
+	print(ContractEmployee(1,"name","dept","job",1236,65))
