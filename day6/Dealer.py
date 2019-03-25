@@ -10,10 +10,11 @@ class Dealer:
 
 	def getMob(self): return self.mob
 
-dealers =  [Dealer(1, "dealer1", "mobile1", "pune"), Dealer(2, "dealer2", "mobile2", "mumbai"), Dealer(3, "dealer3", "mobile3", "pune"), Dealer(4, "dealer4", "mobile4", "delhi"), 
-Dealer(5, "dealer5", "mobile5", "pune")]
+if __name__ == '__main__':
+	dealers =  [Dealer(1, "dealer1", "mobile1", "pune"), Dealer(2, "dealer2", "mobile2", "mumbai"), Dealer(3, "dealer3", "mobile3", "pune"), Dealer(4, "dealer4", "mobile4", "delhi"), 
+	Dealer(5, "dealer5", "mobile5", "pune")]
 
-print(dealers)
-print("dealers from pune:")
-for dealer in dealers:
-	if dealer[3] == "pune": print(dealer)
+	print(dealers)
+	print("dealers from pune:")
+	for dealer in dealers:
+		if dealer[3] == "pune": print(dealer)
