@@ -1,6 +1,6 @@
 import os, sys
 if os.path.exists("../write.txt"):
-	with open("../write.txt")as fr:
+	with open("../write.txt") as fr:
 		flist = fr.readlines()
 else: 
 	flist = list()
