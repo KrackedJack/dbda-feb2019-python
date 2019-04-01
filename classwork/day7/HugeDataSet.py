@@ -7,5 +7,7 @@ print(mydata1.tail(20))
 print(type(mydata1))
 print(len(mydata1.index))
 print(mydata1.shape)
-m=mydata1.iloc[0:,5:]
+m=mydata1.iloc[0:,3:]
+print(m)
 f=mydata1.loc[:5,['City','Shape Reported']]
+print(f)
